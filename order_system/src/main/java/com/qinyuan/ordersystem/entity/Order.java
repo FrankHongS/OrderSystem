@@ -1,11 +1,22 @@
 package com.qinyuan.ordersystem.entity;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.sql.Date;
 
+@Entity(name = "machine_order")
 public class Order {
 
+    @Id
+    @GeneratedValue
     private int id;
 
+    @Column(nullable = false)
     private String name;
 
     private String phoneNumber;
@@ -16,14 +27,11 @@ public class Order {
 
     private String machineType;
 
-    public Order(int id, String name, String phoneNumber, String address, Date soldDate, String machineType) {
-        this.id = id;
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.address = address;
-        this.soldDate = soldDate;
-        this.machineType = machineType;
-    }
+    @CreationTimestamp
+    private Date createdTime;
+
+    @UpdateTimestamp
+    private Date lastUpdatedTime;
 
     public int getId() {
         return id;
@@ -71,5 +79,21 @@ public class Order {
 
     public void setMachineType(String machineType) {
         this.machineType = machineType;
+    }
+
+    public Date getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public Date getLastUpdatedTime() {
+        return lastUpdatedTime;
+    }
+
+    public void setLastUpdatedTime(Date lastUpdatedTime) {
+        this.lastUpdatedTime = lastUpdatedTime;
     }
 }

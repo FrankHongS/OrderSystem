@@ -1,2 +1,18 @@
 server:
   port: 8081
+
+spring:
+  profiles:
+    active: dev
+  mvc:
+    view:
+      suffix: .html
+    static-path-pattern: /**
+  resources:  #静态资源路径，用户可直接访问
+    static-locations: classpath:/templates/,classpath:/static/
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    #InnoDB 支持事务
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect

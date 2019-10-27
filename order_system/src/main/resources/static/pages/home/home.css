@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+button{
+    display: inline-block;
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 18px;
+    background-color: #009688;
+    color: #fff;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 14px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 30px;
+}
+
+.button-container{
+    margin: 20px 0;
+}
+
+.button-container .add-order{
+    margin-left: 60px;
+}
+
+.table-container{
+    width: 96%;
+    margin: 0 auto;
+}
+
+.table-container table{
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    padding: 2px;
+}
+
+.table-container table td{
+    border: 1px solid #0094ff;
+}
+
+.table-container thead td{
+    height: 40px;
+    font-weight: bold;
+}
+
+.table-container tbody td{
+    height: 50px;
+    padding: 0 8px;
+}
+
+.table-container tbody .post-sold-detail{
+    cursor: pointer;
+}
+
+.icon{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.delete{
+    padding-left: 10px;
+}
