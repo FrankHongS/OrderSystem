@@ -4,9 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../order.css">
+    <script src="../../plugin/jquery/jquery-3.4.1.min.js"></script>
+    <script src="../../plugin/laydate/laydate.js"></script>
+    <script src="updateOrder.js"></script>
     <title>Update Order</title>
 </head>
 <body>
-    
+    <div class="update-order-container">
+        <div class="name-wrapper item">
+            <label for="name">姓名：</label>
+            <input type="text" name="name" id="name">
+        </div>
+        <div class="phone-number-wrapper item">
+            <label for="phone-number">电话：</label>
+            <input type="number" name="phone-number" id="phone-number">
+        </div>
+        <div class="address-wrapper item">
+            <label for="address">地址：</label>
+            <input type="text" name="address" id="address">
+        </div>
+        <div class="sold-date-wrapper item">
+            <label for="sold-date">购买日期：</label>
+            <input type="text" name="sold-date" id="sold-date" placeholder="日期" autocomplete="off">
+        </div>
+        <div class="machine-type-wrapper item">
+            <label for="machine-type">机器型号：</label>
+            <input type="text" name="machine-type" id="machine-type">
+        </div>
+        <div class="button-wrapper">
+            <button class="button-sure">修改</button>
+            <button class="button-cancel">取消</button>
+        </div>
+        <div class="message-wapper">
+            <span class="message"></span>
+        </div>
+    </div>
 </body>
 </html>

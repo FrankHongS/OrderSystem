@@ -1,12 +1,15 @@
 package com.qinyuan.ordersystem.service;
 
 import com.qinyuan.ordersystem.entity.Order;
+import com.qinyuan.ordersystem.vo.PageItem;
 
 import java.util.List;
 
 public interface OrderService {
 
     List<Order> getOrders();
+
+    PageItem<Order> getOrdersByPageNoCriteria(int page, int size);
 
     List<Order> getOrdersByName(String name);
 

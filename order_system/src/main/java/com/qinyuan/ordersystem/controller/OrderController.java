@@ -3,11 +3,11 @@ package com.qinyuan.ordersystem.controller;
 import com.qinyuan.ordersystem.entity.Order;
 import com.qinyuan.ordersystem.service.OrderService;
 import com.qinyuan.ordersystem.util.ResultUtil;
+import com.qinyuan.ordersystem.vo.PageItem;
 import com.qinyuan.ordersystem.vo.Result;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -23,6 +23,12 @@ public class OrderController {
     @GetMapping("/query")
     public Result<List<Order>> getOrders() {
         return ResultUtil.success(mOrderService.getOrders());
+    }
+
+    @GetMapping("/query/page")
+    public Result<PageItem<Order>> getOrdersByPage(@RequestParam int page,
+                                                   @RequestParam int size) {
+        return ResultUtil.success(mOrderService.getOrdersByPageNoCriteria(page, size));
     }
 
     @PostMapping("/save")

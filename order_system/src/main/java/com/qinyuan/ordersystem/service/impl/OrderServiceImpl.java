@@ -4,7 +4,12 @@ import com.qinyuan.ordersystem.dao.OrderRepository;
 import com.qinyuan.ordersystem.entity.Order;
 import com.qinyuan.ordersystem.exception.OrderException;
 import com.qinyuan.ordersystem.service.OrderService;
+import com.qinyuan.ordersystem.vo.PageItem;
 import com.qinyuan.ordersystem.vo.ResultEnum;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
@@ -26,8 +31,15 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public PageItem<Order> getOrdersByPageNoCriteria(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.Direction.ASC, "id");
+        Page<Order> orderPage = mOrderRepository.findAll(pageable);
+        return new PageItem<>((int) orderPage.getTotalElements(), orderPage.getContent());
+    }
+
+    @Override
     public List<Order> getOrdersByName(String name) {
-        return mOrderRepository.findOrdersByName(name);
+        return mOrderRepository.findAllByName(name);
     }
 
     @Override
@@ -40,11 +52,11 @@ public class OrderServiceImpl implements OrderService {
         order.setName(name);
         order.setPhoneNumber(phoneNumber);
         order.setAddress(address);
-        if (soldDate != null) {
+        if (soldDate != null && !"".equals(soldDate)) {
             try {
                 order.setSoldDate(Date.valueOf(soldDate));
             } catch (Exception e) {
-                throw new OrderException(ResultEnum.DATE_FORMAT_INVALID);
+                throw new OrderException(ResultEnum.SOLD_DATE_FORMAT_INVALID);
             }
         }
         order.setMachineType(machineType);
@@ -61,6 +73,11 @@ public class OrderServiceImpl implements OrderService {
         Optional<Order> optionalOrder = mOrderRepository.findById(id);
         if (optionalOrder.isPresent()) {
             Order newOrder = new Order();
+
+            Order oldOrder = optionalOrder.get();
+            newOrder.setId(oldOrder.getId());
+            newOrder.setCreatedTime(oldOrder.getCreatedTime());
+
             if (name != null) {
                 newOrder.setName(name);
             }
@@ -70,11 +87,11 @@ public class OrderServiceImpl implements OrderService {
             if (address != null) {
                 newOrder.setAddress(address);
             }
-            if (soldDate != null) {
+            if (soldDate != null && !"".equals(soldDate)) {
                 try {
                     newOrder.setSoldDate(Date.valueOf(soldDate));
                 } catch (Exception e) {
-                    throw new OrderException(ResultEnum.DATE_FORMAT_INVALID);
+                    throw new OrderException(ResultEnum.SOLD_DATE_FORMAT_INVALID);
                 }
             }
             if (machineType != null) {

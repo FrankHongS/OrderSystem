@@ -1,9 +1,9 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-button{
+button {
     display: inline-block;
     width: 120px;
     height: 30px;
@@ -19,56 +19,119 @@ button{
     cursor: pointer;
 }
 
-.title{
+.title-container{
     display: flex;
-    justify-content: center;
-    margin: 20px 0 30px;
+    margin: 20px 20px 0;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.button-container{
-    margin: 20px 0;
+.button-container {
+    margin: 10px 20px 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
-.button-container .add-order{
-    margin-left: 60px;
+.nav-wrapper{
+    text-align: center
 }
 
-.table-container{
+.nav-wrapper ul{
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.nav-wrapper ul li{
+    display: inline-block;
+    padding: 0 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.nav-wrapper .active{
+    color: black;
+    border-bottom: 2px #009688 solid;
+    /* box-shadow: #009688 0 2px; */
+}
+
+.nav-wrapper .unactive{
+    color: #888;
+}
+
+.search-container {
+    display: flex;
+    align-items: flex-end;
+}
+
+.search-container select {
+    width: 80px;
+    height: 35px;
+    margin-right: 10px;
+    padding: 10px;
+}
+
+.search-wrapper {
+    background: #f1f3f4;
+    border-radius: 2px;
+}
+
+.search-icon {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+}
+
+.search-content {
+    width: 250px;
+    height: 40px;
+    font-size: 14px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.table-container, #pager-container {
     width: 96%;
     margin: 0 auto;
 }
 
-.table-container table{
+.table-container table {
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     padding: 2px;
 }
 
-.table-container table td{
+.table-container table td {
     border: 1px solid #0094ff;
 }
 
-.table-container thead td{
+.table-container thead td {
     height: 40px;
     font-weight: bold;
 }
 
-.table-container tbody td{
+.table-container tbody td {
     height: 50px;
     padding: 0 8px;
 }
 
-.table-container tbody .post-sold-detail{
+.table-container tbody .post-sold-detail {
     cursor: pointer;
 }
 
-.icon{
+.icon {
     width: 25px;
     height: 25px;
     cursor: pointer;
 }
 
-.delete{
+.delete {
     padding-left: 10px;
+}
+
+.layui-laypage a, .layui-laypage span {
+    font-size: 14px;
 }
