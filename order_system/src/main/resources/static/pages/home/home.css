@@ -60,6 +60,18 @@ button {
     color: #888;
 }
 
+.refresh-container{
+    display: none;
+    flex: 1;
+    margin-left: 15px;
+}
+
+.refresh-container .refresh-icon{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
 .search-container {
     display: flex;
     align-items: flex-end;
@@ -92,7 +104,9 @@ button {
     outline: none;
 }
 
-.table-container, #pager-container {
+.table-container
+,#all-orders-pager-container
+,#todo-orders-pager-container {
     width: 96%;
     margin: 0 auto;
 }
@@ -112,6 +126,38 @@ button {
     height: 40px;
     font-weight: bold;
 }
+
+.table-container thead td:first-child{
+    width: 5%;
+}
+
+.table-container thead td:nth-child(2){
+    width: 8%;
+}
+
+.table-container thead td:nth-child(3){
+    width: 12%;
+}
+
+.table-container thead td:nth-child(4){
+    width: 30%;
+}
+
+.table-container thead td:nth-child(5){
+    width: 13%;
+}
+
+.table-container thead td:nth-child(6){
+    width: 16%;
+}
+
+.table-container thead td:nth-child(7){
+    width: 7%;
+}
+
+/* .table-container thead td:nth-child(8){
+    width: 9%;
+} */
 
 .table-container tbody td {
     height: 50px;

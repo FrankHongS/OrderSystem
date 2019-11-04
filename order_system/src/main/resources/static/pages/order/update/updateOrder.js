@@ -50,7 +50,7 @@ $(
                 success: result => {
                     if (result.code == 0) {
                         closeFrame();
-                        parent.fetchOrders();
+                        parent.loadOrders();
                     } else {
                         $('.message').text('更新失败: ' + result.message);
                     }

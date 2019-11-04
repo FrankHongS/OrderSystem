@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../plugin/layui/css/layui.css">
     <link rel="stylesheet" href="home.css">
     <script src="../plugin/jquery/jquery-3.4.1.min.js"></script>
+    <script src="allOrders/allOrder.js"></script>
+    <script src="todoOrders/todoOrders.js"></script>
     <script type="text/javascript" src="home.js"></script>
     <script src="../plugin/layui/layui.all.js"></script>
     <title>Home</title>
@@ -21,9 +23,12 @@
     <div class="button-container">
         <div class="nav-wrapper">
             <ul>
-                <li class="active">所有订单</li>
-                <li class="unactive">待处理订单</li>
+                <li>所有订单</li>
+                <li>待处理订单</li>
             </ul>
+        </div>
+        <div class="refresh-container">
+            <img class="refresh-icon" src="../images/refresh.png" alt="刷新" srcset="" title="刷新待处理订单">
         </div>
         <div class="search-container">
             <select name="" id="">
@@ -36,38 +41,79 @@
         </div>
 
     </div>
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <td>序号</td>
-                    <td>姓名</td>
-                    <td>电话</td>
-                    <td>地址</td>
-                    <td>购买日期</td>
-                    <td>机器型号</td>
-                    <td>售后细节</td>
-                    <td>操作</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>序号</td>
-                    <td>姓名</td>
-                    <td>电话</td>
-                    <td>地址</td>
-                    <td>购买日期</td>
-                    <td>机器型号</td>
-                    <td>售后细节</td>
-                    <td>
-                        <img class="edit icon" src="../images/edit.png" alt="编辑" srcset="" title="编辑">
-                        <img class="delete icon" src="../images/delete.png" alt="删除" srcset="" title="删除">
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="data-container">
+        <div id="all-orders"></div>
+        <div id="todo-orders"></div>
     </div>
-    <div id="pager-container"></div>
+    <!-- <div class="all-orders-container">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <td>序号</td>
+                        <td>姓名</td>
+                        <td>电话</td>
+                        <td>地址</td>
+                        <td>购买日期</td>
+                        <td>机器型号</td>
+                        <td>售后细节</td>
+                        <td>操作</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>洪帅华</td>
+                        <td>15122905087</td>
+                        <td>江西省抚州市临川区秋溪镇洪坊村4组</td>
+                        <td>2019-12-01</td>
+                        <td>XX-XXXX-XXXX</td>
+                        <td>······</td>
+                        <td>
+                            <img class="edit icon" src="../images/edit.png" alt="编辑" srcset="" title="编辑">
+                            <img class="delete icon" src="../images/delete.png" alt="删除" srcset="" title="删除">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="all-pager-container"></div>
+    </div>
+    <div class="todo-orders-container" style="display: none;">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <td>序号</td>
+                        <td>姓名</td>
+                        <td>电话</td>
+                        <td>地址</td>
+                        <td>购买日期</td>
+                        <td>机器型号</td>
+                        <td>售后细节</td>
+                        <td>操作</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>洪帅华</td>
+                        <td>15122905087</td>
+                        <td>江西省抚州市临川区秋溪镇洪坊村4组</td>
+                        <td>2019-12-01</td>
+                        <td>XX-XXXX-XXXX</td>
+                        <td>······</td>
+                        <td>
+                            <img class="edit icon" src="../images/edit.png" alt="编辑" srcset="" title="编辑">
+                            <img class="delete icon" src="../images/delete.png" alt="删除" srcset="" title="删除">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="todo-pager-container"></div>
+    </div> -->
+
 </body>
 
 </html>

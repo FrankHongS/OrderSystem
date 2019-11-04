@@ -9,4 +9,5 @@ public interface PostSoldConditionRepository extends JpaRepository<PostSoldCondi
 
     List<PostSoldCondition> findAllByOrderId(int orderId);
 
+    List<PostSoldCondition> findAllByStatus(int status);
 }

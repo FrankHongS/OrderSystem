@@ -31,6 +31,13 @@ public class OrderController {
         return ResultUtil.success(mOrderService.getOrdersByPageNoCriteria(page, size));
     }
 
+    @GetMapping("/query/page/name")
+    public Result<PageItem<Order>> getOrdersByName(@RequestParam int page,
+                                                   @RequestParam int size,
+                                                   @RequestParam String name) {
+        return ResultUtil.success(mOrderService.getOrdersByName(page, size, name));
+    }
+
     @PostMapping("/save")
     public Result<Order> saveOrder(@RequestParam String name,
                                    String phoneNumber,

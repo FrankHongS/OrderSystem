@@ -11,7 +11,7 @@ public interface OrderService {
 
     PageItem<Order> getOrdersByPageNoCriteria(int page, int size);
 
-    List<Order> getOrdersByName(String name);
+    PageItem<Order> getOrdersByName(int page, int size, String name);
 
     Order addOrder(String name,
                    String phoneNumber,

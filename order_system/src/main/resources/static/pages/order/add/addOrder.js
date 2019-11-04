@@ -38,7 +38,7 @@ $(
                 success: result => {
                     if (result.code == 0) {
                         closeFrame();
-                        parent.fetchOrders();
+                        parent.loadOrders();
                     } else {
                         $('.message').text('保存失败: ' + result.message);
                     }
