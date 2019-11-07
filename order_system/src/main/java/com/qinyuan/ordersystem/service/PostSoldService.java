@@ -23,7 +23,8 @@ public interface PostSoldService {
 
     PostSoldCondition updatePostSold(
             int id,
-            int status
+            int status,
+            String comment
     );
 
     PostSoldCondition deletePostSold(

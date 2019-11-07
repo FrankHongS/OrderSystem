@@ -39,7 +39,7 @@ public class PostSoldServiceImplTest {
     @Test
     public void updatePostSold() {
         PostSoldCondition condition = postSoldService.updatePostSold(
-                68, PostSoldConditionStatus.DONE
+                68, PostSoldConditionStatus.DONE,""
         );
 
         System.out.println(condition);

@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.title-container {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.detail-container {
+    /* margin-left: 20px; */
+}
+
+.item {
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px 60px;
+    font-size: 18px;
+}
+
+.description {
+    display: inline-block;
+    min-width: 100px;
+    font-weight: 400;
+    text-align: right;
+}
+
+.content {
+    display: inline-block;
+    padding: 0 15px;
+    min-width: 300px;
+}
+
+.table-container {
+    width: 96%;
+    margin: 30px auto 0;
+}
+
+.table-container table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    padding: 2px;
+}
+
+.table-container thead td:first-child{
+    width: 5%;
+}
+
+.table-container thead td:nth-child(2){
+    width: 13%;
+}
+
+.table-container thead td:nth-child(3){
+    width: 18%;
+}
+
+/* .table-container thead td:nth-child(4){
+    width: 30%;
+} */
+
+.table-container thead td:nth-child(5){
+    width: 10%;
+}
+
+.table-container table td {
+    border: 1px solid #0094ff;
+}
+
+.table-container thead td {
+    height: 40px;
+    font-weight: bold;
+}
+
+.table-container tbody td {
+    height: 50px;
+    padding: 0 8px;
+}
+
+.icon {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.done{
+    border: solid;
+    border-width: 0 0 0 22px;
+    border-color: seagreen;
+    padding-left: 10px;
+}
+
+.todo{
+    border: solid;
+    border-width: 0 0 0 22px;
+    border-color: tomato;
+    padding-left: 10px;
+}
+
+.skip{
+    border: solid;
+    border-width: 0 0 0 22px;
+    border-color: rgb(129, 131, 134);
+    padding-left: 10px;
+}

@@ -61,11 +61,12 @@ public class PostSoldServiceImpl implements PostSoldService {
     }
 
     @Override
-    public PostSoldCondition updatePostSold(int id, int status) {
+    public PostSoldCondition updatePostSold(int id, int status,String comment) {
         Optional<PostSoldCondition> conditionOptional = mPostSoldRepository.findById(id);
         if (conditionOptional.isPresent()) {
             PostSoldCondition oldCondition = conditionOptional.get();
             oldCondition.setStatus(status);
+            oldCondition.setComment(comment);
             return mPostSoldRepository.save(oldCondition);
         } else {
             throw new OrderException(ResultEnum.POST_SOLD_NOT_PRESENT);

@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+label{
+    padding: 0 15px;
+    min-width: 120px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: right;
+}
+
+button{
+    display: inline-block;
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 18px;
+    background-color: #009688;
+    color: #fff;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 14px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.todo-date{
+    line-height: 20px;
+}
+
+.item{
+    display: flex;
+    align-items: flex-start;
+    margin: 20px 0 20px 40px;
+}
+
+.status-wrapper .status{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status-wrapper .status div{
+    display: flex;
+    align-items: center;
+}
+
+.status span{
+    margin-right: 5px;
+}
+
+.comment-wrapper textarea{
+    width: 70%;
+    height: 200px;
+    padding: 5px;
+    font-size: 1.0em;
+    line-height: 1.2em;
+}
+
+.button-wrapper{
+    margin: 30px 0 20px 190px;
+}
+
+.button-cancel{
+    background-color: #666666;
+    margin-left: 10px;
+}
+
+.message-wapper{
+    margin: 0 0 20px 190px;
+}
+
+.message-wapper .message{
+    color: red;
+}

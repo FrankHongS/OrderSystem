@@ -22,6 +22,8 @@ public class PostSoldCondition {
     @Column(nullable = false)
     private Date todoDate;
 
+    private String comment;
+
     @Column(nullable = false)
     private int status;
 
@@ -53,6 +55,14 @@ public class PostSoldCondition {
 
     public void setTodoDate(Date todoDate) {
         this.todoDate = todoDate;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public int getStatus() {

@@ -161,8 +161,8 @@ window.loadTodoOrders = function (name) {
             item.push(orderEle.soldDate);
             item.push(orderEle.machineType);
             item.push('······');
-            item.push('<img class="edit icon" src="../images/edit.png" alt="编辑" srcset="" title="编辑">' +
-                '<img class="delete icon" src="../images/delete.png" alt="删除" srcset="" title="删除">');
+            item.push('<img class="edit icon" src="../../images/edit.png" alt="编辑" srcset="" title="编辑">' +
+                '<img class="delete icon" src="../../images/delete.png" alt="删除" srcset="" title="删除">');
             dataList.push(item);
         });
 
@@ -179,7 +179,9 @@ window.loadTodoOrders = function (name) {
 
     function bindTableClick() {
         $('.todo-orders-container .post-sold-detail').on('click', function (e) {
-            alert('售后细节' + $(e.target).parent().index());
+            const index = $(e.target).parent().index();
+            localStorage.selectedOrder=JSON.stringify(order.data[index]);
+            window.open('../postsold/postsold.html');
         });
 
         $('.todo-orders-container .edit').on('click', function (e) {
