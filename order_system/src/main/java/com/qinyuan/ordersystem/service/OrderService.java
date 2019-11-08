@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface OrderService {
 
+    Order getOrder(int id);
+
     List<Order> getOrders();
 
     PageItem<Order> getOrdersByPageNoCriteria(int page, int size);

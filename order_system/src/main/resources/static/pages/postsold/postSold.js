@@ -1,22 +1,37 @@
 $(
     function () {
-        const selectedOrder = eval('(' + localStorage.selectedOrder + ')');
-
+        const id = decodeURIComponent($.Request('id'));
         const postsold = {};
 
         function bindOrder() {
-            $('.name').text(selectedOrder.name);
-            $('.phone-number').text(selectedOrder.phoneNumber);
-            $('.address').text(selectedOrder.address);
-            $('.sold-date').text(selectedOrder.soldDate);
-            $('.machine-type').text(selectedOrder.machineType);
+            $.ajax({
+                url: '/order/query/one',
+                data: {
+                    id: id,
+                },
+                success: result => {
+                    if (result.code == 0) {
+                        const selectedOrder = result.data;
+                        $('.name').text(selectedOrder.name);
+                        $('.phone-number').text(selectedOrder.phoneNumber);
+                        $('.address').text(selectedOrder.address);
+                        $('.sold-date').text(selectedOrder.soldDate);
+                        $('.machine-type').text(selectedOrder.machineType);
+                    } else {
+                        console.error(result.message);
+                    }
+                },
+                error: (xhr, e) => {
+                    console.error(e);
+                }
+            });
         }
 
         window.fetchPostSoldInfo = function () {
             $.ajax({
                 url: '/postsold/query',
                 data: {
-                    orderId: selectedOrder.id,
+                    orderId: id,
                 },
                 success: result => {
                     if (result.code == 0) {

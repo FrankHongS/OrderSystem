@@ -1,5 +1,6 @@
 package com.qinyuan.ordersystem.service.impl;
 
+import com.qinyuan.ordersystem.dao.PostSoldConditionRepository;
 import com.qinyuan.ordersystem.entity.PostSoldCondition;
 import com.qinyuan.ordersystem.service.PostSoldService;
 import com.qinyuan.ordersystem.util.PostSoldConditionStatus;
@@ -19,9 +20,12 @@ public class PostSoldServiceImplTest {
     @Autowired
     private PostSoldService postSoldService;
 
+    @Autowired
+    private PostSoldConditionRepository postSoldConditionRepository;
+
     @Test
     public void getPostSoldConditions() {
-        List<PostSoldCondition> conditionList=postSoldService.getPostSoldConditions(12);
+        List<PostSoldCondition> conditionList = postSoldService.getPostSoldConditions(12);
 
         System.out.println(conditionList);
     }
@@ -39,7 +43,7 @@ public class PostSoldServiceImplTest {
     @Test
     public void updatePostSold() {
         PostSoldCondition condition = postSoldService.updatePostSold(
-                68, PostSoldConditionStatus.DONE,""
+                68, PostSoldConditionStatus.DONE, ""
         );
 
         System.out.println(condition);
@@ -51,5 +55,10 @@ public class PostSoldServiceImplTest {
         PostSoldCondition condition = postSoldService.deletePostSold(68);
 
         System.out.println(condition);
+    }
+
+    @Test
+    public void deletePostSoldByOrderId() {
+        postSoldConditionRepository.deleteByOrderId(2);
     }
 }

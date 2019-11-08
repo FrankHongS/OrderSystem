@@ -4,6 +4,7 @@ import com.qinyuan.ordersystem.dao.OrderRepository;
 import com.qinyuan.ordersystem.dao.PostSoldConditionRepository;
 import com.qinyuan.ordersystem.dao.RecentDateRepository;
 import com.qinyuan.ordersystem.entity.Order;
+import com.qinyuan.ordersystem.entity.RecentDate;
 import com.qinyuan.ordersystem.exception.OrderException;
 import com.qinyuan.ordersystem.service.OrderService;
 import com.qinyuan.ordersystem.vo.PageItem;
@@ -28,12 +29,22 @@ public class OrderServiceImpl implements OrderService {
     private final RecentDateRepository mRecentDateRepository;
     private final PostSoldConditionRepository mPostSoldConditionRepository;
 
-    private static final Logger logger= LoggerFactory.getLogger(OrderServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(OrderServiceImpl.class);
 
     public OrderServiceImpl(OrderRepository orderRepository, RecentDateRepository recentDateRepository, PostSoldConditionRepository postSoldConditionRepository) {
         this.mOrderRepository = orderRepository;
         this.mRecentDateRepository = recentDateRepository;
         this.mPostSoldConditionRepository = postSoldConditionRepository;
+    }
+
+    @Override
+    public Order getOrder(int id) {
+        Optional<Order> optionalOrder = mOrderRepository.findById(id);
+        if (optionalOrder.isPresent()) {
+            return optionalOrder.get();
+        } else {
+            throw new OrderException(ResultEnum.ORDER_NOT_PRESENT);
+        }
     }
 
     @Override
@@ -125,18 +136,15 @@ public class OrderServiceImpl implements OrderService {
             Order order = optionalOrder.get();
             mOrderRepository.delete(order);
 
-            try {
-                // 删除与该orderId相关联的recentDate,当不存在时会抛异常
+            Optional<RecentDate> optionalRecentDate = mRecentDateRepository.findById(id);
+            if (optionalRecentDate.isPresent()) {
                 mRecentDateRepository.deleteById(id);
-            }catch (Exception e){
-                logger.error(e.getMessage());
             }
 
             try {
-                // 删除与该orderId相关联的全部postsold,当不存在时会抛异常
-                // 另外，该删除操作需要数据库支持事务，否则报错javax.persistence.TransactionRequiredException
+                // 该删除操作需要数据库支持事务，否则报错javax.persistence.TransactionRequiredException
                 mPostSoldConditionRepository.deleteByOrderId(id);
-            }catch (Exception e){
+            } catch (Exception e) {
                 logger.error(e.getMessage());
             }
 

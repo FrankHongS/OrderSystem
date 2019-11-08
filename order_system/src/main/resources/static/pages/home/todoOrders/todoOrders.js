@@ -181,8 +181,7 @@ window.loadTodoOrders = function (name) {
     function bindTableClick() {
         $('.todo-orders-container .post-sold-detail').on('click', function (e) {
             const index = $(e.target).parent().index();
-            localStorage.selectedOrder = JSON.stringify(order.data[index]);
-            window.open('../postsold/postsold.html');
+            window.open('../postsold/postsold.html?id='+order.data[index].id);
         });
 
         $('.todo-orders-container .edit').on('click', function (e) {

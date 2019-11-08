@@ -20,6 +20,11 @@ public class OrderController {
         this.mOrderService = orderService;
     }
 
+    @GetMapping("/query/one")
+    public Result<Order> getOrder(@RequestParam int id) {
+        return ResultUtil.success(mOrderService.getOrder(id));
+    }
+
     @GetMapping("/query")
     public Result<List<Order>> getOrders() {
         return ResultUtil.success(mOrderService.getOrders());
