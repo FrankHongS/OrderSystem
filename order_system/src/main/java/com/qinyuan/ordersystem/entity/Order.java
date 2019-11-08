@@ -96,4 +96,18 @@ public class Order {
     public void setLastUpdatedTime(Date lastUpdatedTime) {
         this.lastUpdatedTime = lastUpdatedTime;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", address='" + address + '\'' +
+                ", soldDate=" + soldDate +
+                ", machineType='" + machineType + '\'' +
+                ", createdTime=" + createdTime +
+                ", lastUpdatedTime=" + lastUpdatedTime +
+                '}';
+    }
 }

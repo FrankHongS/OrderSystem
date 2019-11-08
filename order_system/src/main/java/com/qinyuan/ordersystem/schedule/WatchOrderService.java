@@ -20,9 +20,13 @@ public class WatchOrderService {
         this.mCheckPostOrderService = checkPostOrderService;
     }
 
-    @Scheduled(cron = "0 0/10 * * * ?")
+    //上一次执行完毕时间点之后多长时间再执行
+    // long fixedDelay() default -1L;
+    //上一次开始执行时间点之后多长时间再执行
+    // long fixedRate() default -1L;
+    @Scheduled(initialDelay = 0L, fixedDelay = 10 * 60 * 1000L)
     public void watchOrder() {
-        logger.info("hello world");
+        logger.info("========watch order========");
         mCheckPostOrderService.checkPostOrder();
     }
 

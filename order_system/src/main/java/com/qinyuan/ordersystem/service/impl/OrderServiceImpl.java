@@ -1,19 +1,23 @@
 package com.qinyuan.ordersystem.service.impl;
 
 import com.qinyuan.ordersystem.dao.OrderRepository;
+import com.qinyuan.ordersystem.dao.PostSoldConditionRepository;
+import com.qinyuan.ordersystem.dao.RecentDateRepository;
 import com.qinyuan.ordersystem.entity.Order;
 import com.qinyuan.ordersystem.exception.OrderException;
 import com.qinyuan.ordersystem.service.OrderService;
 import com.qinyuan.ordersystem.vo.PageItem;
 import com.qinyuan.ordersystem.vo.ResultEnum;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,9 +25,15 @@ import java.util.Optional;
 public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository mOrderRepository;
+    private final RecentDateRepository mRecentDateRepository;
+    private final PostSoldConditionRepository mPostSoldConditionRepository;
 
-    public OrderServiceImpl(OrderRepository orderRepository) {
+    private static final Logger logger= LoggerFactory.getLogger(OrderServiceImpl.class);
+
+    public OrderServiceImpl(OrderRepository orderRepository, RecentDateRepository recentDateRepository, PostSoldConditionRepository postSoldConditionRepository) {
         this.mOrderRepository = orderRepository;
+        this.mRecentDateRepository = recentDateRepository;
+        this.mPostSoldConditionRepository = postSoldConditionRepository;
     }
 
     @Override
@@ -107,12 +117,29 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
+    @Transactional
     @Override
     public Order deleteOrder(int id) {
         Optional<Order> optionalOrder = mOrderRepository.findById(id);
         if (optionalOrder.isPresent()) {
             Order order = optionalOrder.get();
             mOrderRepository.delete(order);
+
+            try {
+                // 删除与该orderId相关联的recentDate,当不存在时会抛异常
+                mRecentDateRepository.deleteById(id);
+            }catch (Exception e){
+                logger.error(e.getMessage());
+            }
+
+            try {
+                // 删除与该orderId相关联的全部postsold,当不存在时会抛异常
+                // 另外，该删除操作需要数据库支持事务，否则报错javax.persistence.TransactionRequiredException
+                mPostSoldConditionRepository.deleteByOrderId(id);
+            }catch (Exception e){
+                logger.error(e.getMessage());
+            }
+
             return order;
         } else {
             throw new OrderException(ResultEnum.ORDER_NOT_PRESENT);

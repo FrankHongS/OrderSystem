@@ -2,7 +2,7 @@ window.loadAllOrders = function (name) {
     const order = {};
     const size = 10;
     // current page
-    let page = 0;
+    let page = localStorage.allPage ? localStorage.allPage : 0;
     // order item count
     let count = 0;
 
@@ -93,6 +93,7 @@ window.loadAllOrders = function (name) {
                     const curr = obj.curr;
                     // update current page
                     page = curr - 1;
+                    localStorage.allPage = page;
                     isJump = true;
                     fetchOrders();
                 }
@@ -180,7 +181,7 @@ window.loadAllOrders = function (name) {
     function bindTableClick() {
         $('.all-orders-container .post-sold-detail').on('click', function (e) {
             const index = $(e.target).parent().index();
-            localStorage.selectedOrder=JSON.stringify(order.data[index]);
+            localStorage.selectedOrder = JSON.stringify(order.data[index]);
             window.open('../postsold/postsold.html');
         });
 
@@ -215,6 +216,7 @@ window.loadAllOrders = function (name) {
                             // 当page的item全部被删除，需对page重新赋值
                             if (page > parseInt((count - 2) / size)) {
                                 page = parseInt((count - 2) / size);
+                                localStorage.allPage = page;
                             }
                             fetchOrders();
                         } else {
