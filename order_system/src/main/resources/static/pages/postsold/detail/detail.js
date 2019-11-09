@@ -24,7 +24,7 @@ $(
 
         function savePostSold() {
             $.ajax({
-                url: '/postsold/update',
+                url: '/ordersystem/postsold/update',
                 type: 'POST',
                 data: {
                     id: postsold.id,

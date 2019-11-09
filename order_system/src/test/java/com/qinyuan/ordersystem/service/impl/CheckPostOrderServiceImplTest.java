@@ -2,6 +2,7 @@ package com.qinyuan.ordersystem.service.impl;
 
 import com.qinyuan.ordersystem.dao.RecentDateRepository;
 import com.qinyuan.ordersystem.entity.RecentDate;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +22,13 @@ public class CheckPostOrderServiceImplTest {
     private RecentDateRepository recentDateRepository;
 
     @Test
+    @Ignore
     public void checkPostOrder() {
 
     }
 
     @Test
+    @Ignore
     public void getRecentDate() {
         Optional<RecentDate> optional = recentDateRepository.findById(12);
 
@@ -33,6 +36,7 @@ public class CheckPostOrderServiceImplTest {
     }
 
     @Test
+    @Ignore
     public void addRecentDate() {
         RecentDate recentDate = new RecentDate();
         recentDate.setOrderId(12);

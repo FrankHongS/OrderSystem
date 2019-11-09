@@ -26,7 +26,7 @@ $(
                 return;
             }
             $.ajax({
-                url: '/order/save',
+                url: '/ordersystem/order/save',
                 type: 'POST',
                 data: {
                     name: $('#name').val(),

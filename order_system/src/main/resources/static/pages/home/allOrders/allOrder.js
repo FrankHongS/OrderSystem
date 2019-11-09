@@ -11,7 +11,7 @@ window.loadAllOrders = function (name) {
 
     function fetchOrders() {
         $.ajax({
-            url: '/order/query/page',
+            url: '/ordersystem/order/query/page',
             data: {
                 page: page,
                 size: size
@@ -31,7 +31,7 @@ window.loadAllOrders = function (name) {
 
     function fetchOrdersByName() {
         $.ajax({
-            url: '/order/query/page/name',
+            url: '/ordersystem/order/query/page/name',
             data: {
                 page: page,
                 size: size,
@@ -204,7 +204,7 @@ window.loadAllOrders = function (name) {
                 const index = $(e.target).parent().parent().index();
                 const id = order.data[index].id;
                 $.ajax({
-                    url: '/order/delete',
+                    url: '/ordersystem/order/delete',
                     type: 'DELETE',
                     data: {
                         id: id

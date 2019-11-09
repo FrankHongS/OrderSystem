@@ -5,7 +5,7 @@ $(
 
         function bindOrder() {
             $.ajax({
-                url: '/order/query/one',
+                url: '/ordersystem/order/query/one',
                 data: {
                     id: id,
                 },
@@ -29,7 +29,7 @@ $(
 
         window.fetchPostSoldInfo = function () {
             $.ajax({
-                url: '/postsold/query',
+                url: '/ordersystem/postsold/query',
                 data: {
                     orderId: id,
                 },

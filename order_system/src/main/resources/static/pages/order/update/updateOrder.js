@@ -37,7 +37,7 @@ $(
                 return;
             }
             $.ajax({
-                url: '/order/update',
+                url: '/ordersystem/order/update',
                 type: 'POST',
                 data: {
                     id: order.id,

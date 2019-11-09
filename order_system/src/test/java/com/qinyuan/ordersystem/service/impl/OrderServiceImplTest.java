@@ -3,6 +3,7 @@ package com.qinyuan.ordersystem.service.impl;
 import com.qinyuan.ordersystem.dao.OrderRepository;
 import com.qinyuan.ordersystem.entity.Order;
 import com.qinyuan.ordersystem.service.OrderService;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ public class OrderServiceImplTest {
     private OrderService orderService;
 
     @Test
+    @Ignore
     public void addOrder(){
         Order order=new Order();
         order.setName("Frank");
@@ -34,6 +36,7 @@ public class OrderServiceImplTest {
     }
 
     @Test
+    @Ignore
     public void deleteOrder(){
         System.out.println(orderService.deleteOrder(88));
     }
